@@ -1,0 +1,17 @@
+logging:
+  level:
+    org.spring.framework: info
+# use debug to more details
+spring:
+  messages:
+    basename: messages
+    h2:
+      console:
+        enable: true
+    jpa:
+      show-sql: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

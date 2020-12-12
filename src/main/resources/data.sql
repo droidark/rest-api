@@ -1,0 +1,12 @@
+insert into user values(1001, sysdate(), 'Cammy');
+insert into user values(1002, sysdate(), 'Chun-Li');
+insert into user values(1003, sysdate(), 'Juri');
+insert into post values(1101, 'Cannon Spike',1001);
+insert into post values(1102, 'Cannon Spike',1001);
+insert into post values(1103, 'Hooligan Combination',1001);
+insert into post values(1104, 'Hyakuretsukyaku',1002);
+insert into post values(1105, 'Kikoken',1002);
+insert into post values(1106, 'Spinning Bird Kick',1002);
+insert into post values(1107, 'Fuharenkyaku',1003);
+insert into post values(1108, 'Tensenrin',1003);
+insert into post values(1109, 'Ryodansatsu',1003);
