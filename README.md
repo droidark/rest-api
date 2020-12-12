@@ -1,28 +1,28 @@
 # REST API TUTORIAL WITH SPRING BOOT
 ## Introduction to Web Services
-###Web Service definition
+### Web Service definition
 Software system designed to support **interoperable** **machine-to-machine** interaction **over a network**.
-###Web services three Keys
+### Web services three Keys
 1. Designed for machine-to-machine interaction.
 1. Should be interoperable (no platform dependent).
 1. Should allow communication over a network.
-###Web Service communication
+### Web Service communication
 The system communication should be platform independent. To achieve that there are two popular options.
 * JSON
 * XML
-####Service definition
+#### Service definition
 The service definition defines what is the format of the request and response. It’s the contract between the service provider and the service consumer.
 * Request/Response format.
 * Request structure.
 * Response structure.
 * Endpoint.
-####Transport
+#### Transport
 Transport defines how a service is called.
-#####HTTP (Hyper Text Transfer Protocol)
+##### HTTP (Hyper Text Transfer Protocol)
 The service is exposed over the Web (through a URL).
-#####Message Queue
+##### Message Queue
 Message queues enable asynchronous communication, which means that the endpoints that are producing and consuming messages interact with the queue, not each other. Producers can add requests to the queue without waiting for them to be processed. Consumers process messages only when they are available. No component in the system is ever stalled waiting for another, optimizing data flow.
-###Key Terminology
+### Key Terminology
 * Request and response.
 * Message Exchange Format.
     * XML.
@@ -33,26 +33,26 @@ Message queues enable asynchronous communication, which means that the endpoints
 * Transport.
     * HTTP.
     * Message Queue.
-##REST (REPRESENTATIONAL STATE TRANSFER)
+## REST (REPRESENTATIONAL STATE TRANSFER)
 A REST API defines a set of functions which developers can perform requests and receive responses via HTTP protocols.
-###Resource
+### Resource
 * A resource has a URI (Uniform Resource Identifier).
 * A resource can have different representations.
-##SPRING BOOT AUTOCONFIGURATION AND DISPATCHER SERVLET
-###What's dispatcher servlet?
+## SPRING BOOT AUTOCONFIGURATION AND DISPATCHER SERVLET
+### What's dispatcher servlet?
 The dispatcher-servlet handles all the requests. Dispatcher-servlet is the front controller for Spring MVC.
-###Who is configuring the dispatcher servlet?
+### Who is configuring the dispatcher servlet?
 Spring Boot auto-configuration automatically when found the dispatcher-servlet on the classpath.
-###What does the dispatcher servlet do?
+### What does the dispatcher servlet do?
 The job of the DispatcherServlet is to take an incoming URI and find the right combination of handlers (generally methods on Controller classes) and views that combine to form the page or resource that's supposed to be found at that location. The Dispatcher servlet is the bit that *"knows"* to call that method when a browser requests the page, and to combine its results with the matching document.
-###How does the Bean object get converted to JSON?
+### How does the Bean object get converted to JSON?
 HTTPMessageConvertersAutoConfiguration. JacksonObjectMapper who's convert Java Objects to JSON (It's configured in the dispatcher-servlet)
-###Who is configuring the error mapping?
+### Who is configuring the error mapping?
 Spring Boot auto-configuration automatically when found the ErrorMVC on the classpath.
 Spring Boot looks at all the classes, all the JARs which are available and based on whatever is in the classpath, it tries to auto-configure different things like dispatcher servlet.
-##REST BEST PRACTICES
+## REST BEST PRACTICES
 https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design
-##GENERIC EXCEPTION HANDLING
+## GENERIC EXCEPTION HANDLING
 It’s necessary to build standard structure to handle the exceptions.
 The steps to create a exception handling
 1. Create a Response Bean
@@ -89,7 +89,7 @@ The steps to create a exception handling
     }
     ````
 1. More options, review https://www.baeldung.com/exception-handling-for-rest-with-spring
-##VALIDATIONS
+## VALIDATIONS
 The most common is to use Java Validation API. The steps to add a validation in our REST API are:
 1. Add **@Valid** annotation in out controller method signature.
 1. Set the rules in the entity class (POJO) using a valid annotation (to know more about the available annotations, please visit https://docs.oracle.com/javaee/7/api/javax/validation/constraints/package-summary.html)
@@ -99,14 +99,14 @@ The most common is to use Java Validation API. The steps to add a validation in 
 > With getBindingResult() it's possible to manage the information displayed about the error.
 
 Hibernate validator is the most important implementation of `javax.validation`.
-##HATEOAS (HYPERMEDIA AS THE ENGINE OF APPLICATION STATE)
+## HATEOAS (HYPERMEDIA AS THE ENGINE OF APPLICATION STATE)
 Each HTTP GET request should return the information necessary to find the resources related directly to the requested object through hyperlinks included in the response, and it should also be provided with information that describes the operations available on each of these resources.
 
 https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design#use-hateoas-to-enable-navigation-to-related-resources
 
 > Currently, there are no standards or specifications that define how to model the HATEOAS principle.
 
-##INTERNATIONALIZATION (i18n)
+## INTERNATIONALIZATION (i18n)
 The steps to configure the internationalization are:
 1. Configure **LocalResolver** Bean
     ```java
@@ -133,7 +133,7 @@ The steps to configure the internationalization are:
        return messageSource.getMessage("good.morning.message", null, LocaleContextHolder.getLocale());
     }
     ```
-##CONTENT NEGOTIATION - SUPPORT FOR XML
+## CONTENT NEGOTIATION - SUPPORT FOR XML
 The steps to support XML responses are:
 1. Add Jackson Dataformat XML dependency on `pom.xml`
     ```xml
@@ -143,7 +143,7 @@ The steps to support XML responses are:
     </dependency>
     ```
 1. To test you need to add the next header **Accept: application/xml** and **Content-Type: application/xml** (for POST, PUT or PATCH requests)
-##CONFIGURING OPENAPI 3.0 DOCUMENTATION
+## CONFIGURING OPENAPI 3.0 DOCUMENTATION
 To configure OpenAPI, it’s necessary to import the next dependencies:
 ```xml
 <dependency>
@@ -152,14 +152,14 @@ To configure OpenAPI, it’s necessary to import the next dependencies:
     <version>${version}</version>
 </dependency>
 ```
-###View documentation in JSON format
+### View documentation in JSON format
 > http://[host]:[port]/v3/api-docs/
-###View documentation with UI
+### View documentation with UI
 > http://[host]:[port]/swagger-ui.html
-###Edit configuration
+### Edit configuration
 https://www.dariawan.com/tutorials/spring/documenting-spring-boot-rest-api-springdoc-openapi-3/
-###Edit general information
-####Option 1
+### Edit general information
+#### Option 1
 Create a configuration bean to overwrite the default information
 ```java
 @Configuration
@@ -180,7 +180,7 @@ public class OpenApiConfig {
     }
 }
 ```
-####Option 2
+#### Option 2
 Put the next annotations in the main class.
 ```java
 @OpenAPIDefinition(
@@ -193,8 +193,8 @@ Put the next annotations in the main class.
         )
 )
 ```
-##MONITORING APIS WITH SPRING BOOT ACTUATOR
-###Install Spring Actuator in our project.
+## MONITORING APIS WITH SPRING BOOT ACTUATOR
+### Install Spring Actuator in our project.
 To enable Spring Boot Actuator we need to import two dependencies
 ```xml
 <dependency>
@@ -206,17 +206,17 @@ To enable Spring Boot Actuator we need to import two dependencies
     <artifactId>spring-data-rest-hal-explorer</artifactId>
 </dependency>
 ```
-####HAL - Hypertext Application Language
+#### HAL - Hypertext Application Language
 It specifies a simple format to specify how to hyperlink between resources in your API. Spring Actuator is in HAL format.
-####HAL Browser
+#### HAL Browser
 It looks at those APIs, identifies the links, and shows them on the screen, so you can easily browse through the API by just clicking the links which are present in there. So, the HAL browser makes it easy to consume the HAL services which are being exposed by spring-boot-starter-actuator.
-###Configure Spring Boot Actuator
+### Configure Spring Boot Actuator
 After to install boot dependencies, Spring Actuator creates a new endpoint `http://[host]:[port]/actuator`, also Spring Actuator will create another three different endpoints to manage the application health.
-####Endpoints
+#### Endpoints
 https://docs.spring.io/spring-boot/docs/1.5.x/reference/html/production-ready-endpoints.html
-####/actuator/health
+#### /actuator/health
 Shows application health information (when the application is secure, a simple *"status"* when accessed over an unauthenticated connection or full message details when authenticated).
-####/actuator/info
+#### /actuator/info
 By default, this endpoint doesn't show anything, to configure it, it’s necessary to edit the `application.yml` file with the next parameter.
 ```yml
 management:
@@ -225,11 +225,11 @@ management:
       exposure:
         include: "*"
 ```
-##FILTERING
+## FILTERING
 It’s important remember, when you enable a lot of tracking, a lot of auditing, what would happen is? there would be a performance impact as well.
-###Static Filtering
+### Static Filtering
 The static filtering is used to skip some bean property for the response. There are two approaches to achieve this.
-###@JsonIgnore
+### @JsonIgnore
 This annotation is used on top of property to ignore in the response
 ```java
 public class SomeBean {
@@ -242,7 +242,7 @@ public class SomeBean {
     private String field3;
 }
 ```
-###@JsonIgnoreProperties
+### @JsonIgnoreProperties
 On the top of the class, `@JsonIgnoreProperties` will ignore the properties defined inside the annotation.
 ```java
 // field1 and field3 will be ignored for the response
@@ -253,7 +253,7 @@ public class SomeBean {
     private String field3;
 }
 ```
-###Dynamic Filtering
+### Dynamic Filtering
 1. Add `@JsonFilter({filterName})` at the class header.
     ```java
     @JsonFilter("FilteringBeanFilter")
@@ -269,28 +269,28 @@ public class SomeBean {
         return mappingJacksonValue;
     }
     ```
-##VERSIONING
-###URI versioning
+## VERSIONING
+### URI versioning
 ```java
 @GetMapping(path = "/{version}/person")
 public PersonV1 personV1() { ... }
 ```
-###Request parameter versioning
+### Request parameter versioning
 ```java
 @GetMapping(path = "/person/params", params = "version={version}")
 public PersonV1 paramsV1() { ... }
 ```
-###Accept the header versioning
+### Accept the header versioning
 ```java
 @GetMapping(path = "/person/header", headers = "X-API-VERSION={version}")
 public PersonV1 headerV1() { ... }
 ```
-###MIME type versioning
+### MIME type versioning
 ```java
 @GetMapping(path = "/person/produces", produces = "application/xyz.krakenkat.app-{version}+json")
 public PersonV1 producesV1() { ... }
 ```
-##BASIC AUTHENTICATION WITH SPRING SECURITY
+## BASIC AUTHENTICATION WITH SPRING SECURITY
 The first step to implement a basic authentication with Spring Boot is import Spring Security dependency. Once the dependency is downloaded, Spring Boot automatically will start to configure the basic security for **ALL METHODS**.
 ```xml
 <dependency>
@@ -323,14 +323,14 @@ spring:
         name: username
         password: password
 ```
-##RICHARDSON MATURITY MODEL
+## RICHARDSON MATURITY MODEL
 https://developers.redhat.com/blog/2017/09/13/know-how-restful-your-api-is-an-overview-of-the-richardson-maturity-model/
-##REST BEST PRACTICES
-###Consumer first
+## REST BEST PRACTICES
+### Consumer first
 * Have a clear idea about who your consumers are.
 * The first and the last best practice is consumer first.
 * Have a great documentation for your APIs.
-###Make the best use of HTTP
+### Make the best use of HTTP
 * Request methods
     * GET
     * POST
