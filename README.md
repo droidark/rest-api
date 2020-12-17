@@ -24,6 +24,7 @@ Transport defines how a service is called.
 The service is exposed over the Web (through a URL).
 ##### Message Queue
 Message queues enable asynchronous communication, which means that the endpoints that are producing and consuming messages interact with the queue, not each other. Producers can add requests to the queue without waiting for them to be processed. Consumers process messages only when they are available. No component in the system is ever stalled waiting for another, optimizing data flow.
+![message queue](https://raw.githubusercontent.com/droidark/rest-api/master/diagrams/message-queue.svg)
 ### Key Terminology
 * Request and response.
 * Message Exchange Format.
