@@ -2,6 +2,8 @@
 ## Introduction to Web Services
 ### Web Service definition
 Software system designed to support **interoperable** **machine-to-machine** interaction **over a network**.
+### Web Service communication
+![web service communication](https://raw.githubusercontent.com/droidark/rest-api/master/diagrams/web-service-communication.svg)
 ### Web services three Keys
 1. Designed for machine-to-machine interaction.
 1. Should be interoperable (no platform dependent).
