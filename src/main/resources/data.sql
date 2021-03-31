@@ -1,6 +1,6 @@
-insert into user values(1001, sysdate(), 'Cammy');
-insert into user values(1002, sysdate(), 'Chun-Li');
-insert into user values(1003, sysdate(), 'Juri');
+insert into user values(1001, sysdate(), 'cammy', '{bcrypt}$2a$10$6vznRZg9sYnyY7EVPRNA9.AMvWwpTSttV5YN/cqwkop2hceKDp4eq');
+insert into user values(1002, sysdate(), 'chun-li', '{bcrypt}$2a$10$6vznRZg9sYnyY7EVPRNA9.AMvWwpTSttV5YN/cqwkop2hceKDp4eq');
+insert into user values(1003, sysdate(), 'juri', '{bcrypt}$2a$10$6vznRZg9sYnyY7EVPRNA9.AMvWwpTSttV5YN/cqwkop2hceKDp4eq');
 insert into post values(1101, 'Cannon Spike',1001);
 insert into post values(1102, 'Cannon Spike',1001);
 insert into post values(1103, 'Hooligan Combination',1001);

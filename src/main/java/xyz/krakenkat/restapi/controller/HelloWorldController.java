@@ -5,8 +5,10 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 import xyz.krakenkat.restapi.domain.model.HelloWorld;
+import xyz.krakenkat.restapi.util.JwtUtil;
 
 @AllArgsConstructor
 @RestController
@@ -20,11 +22,13 @@ public class HelloWorldController {
 
     // INTERNATIONALIZATION BEAN
     private MessageSource messageSource;
+    private JwtUtil jwtUtil;
 
-    // SOLUTION 2
+    // FILTER REQUEST
     @GetMapping(path = "/hello-world")
-    public String helloWorld() {
-        return "Hello World";
+    public String helloWorld(@RequestHeader(name = "Authorization") String token) {
+        String username = jwtUtil.extractUsername(token.substring(7));
+        return String.format("Hello, %s!", username);
     }
 
     @GetMapping(path = "/hello-world-bean")

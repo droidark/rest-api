@@ -6,4 +6,5 @@ import xyz.krakenkat.restapi.domain.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
+    User findByName(String name);
 }

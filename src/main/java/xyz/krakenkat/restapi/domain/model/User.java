@@ -24,6 +24,8 @@ public class User {
     @Schema(description = "Name should have at least two characters")   // Legacy annotation: @ApiModelProperty
     private String name;
 
+    private String password;
+
     @Past
     @Schema(description = "Birth date should be in the past.")
     private Date birthDay;
