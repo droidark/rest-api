@@ -5,7 +5,7 @@
 It's recommendable check this link before reading this document [What is JWT?](https://jwt.io/introduction).
 
 ### Watch this
-This document is based on Java Brais Tutorial [Spring Boot + Spring Security + JWT from scratch - Java Brains](https://www.youtube.com/watch?v=X80nJ5T7YpE)
+This document is based on Java Brains Tutorial [Spring Boot + Spring Security + JWT from scratch - Java Brains](https://www.youtube.com/watch?v=X80nJ5T7YpE)
 
 ## Import dependencies
 In ```pom.xml```
@@ -78,7 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManager();
     }
 
-    // Bean to crypt and decrypt password stogaed in database.
+    // Bean to crypt and decrypt password stored in database.
     @Bean
     public PasswordEncoder passwordEncoder() {
         String idForEncode = "bcrypt";
@@ -114,7 +114,7 @@ public class MyUserDetailsService implements UserDetailsService {
 ```
 
 ## JWT Util class
-This class is used to run common operations in JWT token. this class is placen in ```util``` package
+This class is used to run common operations in JWT token. this class is placed in ```util``` package
 ```java
 @Service
 public class JwtUtil {
