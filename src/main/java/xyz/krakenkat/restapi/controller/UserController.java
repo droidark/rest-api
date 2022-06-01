@@ -55,7 +55,7 @@ public class UserController {
     // More information about ResponseEntity:
     // https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/RequestEntity.html
     @PostMapping
-    public ResponseEntity<?> createUSer(@Valid @RequestBody User user) {
+    public ResponseEntity<?> createUser(@Valid @RequestBody User user) {
         User savedUSer = userRepository.save(user);
 
         URI location = ServletUriComponentsBuilder

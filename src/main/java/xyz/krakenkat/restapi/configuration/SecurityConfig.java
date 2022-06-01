@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import xyz.krakenkat.restapi.filter.JwtRequestFilter;
 import xyz.krakenkat.restapi.service.impl.MyUserDetailsService;
+import xyz.krakenkat.restapi.service.impl.OpenLdapAuthenticationProviderService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,19 +24,21 @@ import java.util.Map;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private MyUserDetailsService myUserDetailsService;
+
+    private OpenLdapAuthenticationProviderService openLdapAuthenticationProviderService;
     private JwtRequestFilter jwtRequestFilter;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(myUserDetailsService);
+        auth.authenticationProvider(openLdapAuthenticationProviderService);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf()
-                .disable().
-                authorizeRequests()
+                .disable()
+                .authorizeRequests()
                 .antMatchers("/authentication/login")
                 .permitAll()
                 .anyRequest()
