@@ -1,12 +1,8 @@
-insert into user values(1001, sysdate(), 'cammy', '{bcrypt}$2a$10$6vznRZg9sYnyY7EVPRNA9.AMvWwpTSttV5YN/cqwkop2hceKDp4eq');
-insert into user values(1002, sysdate(), 'chun-li', '{bcrypt}$2a$10$6vznRZg9sYnyY7EVPRNA9.AMvWwpTSttV5YN/cqwkop2hceKDp4eq');
-insert into user values(1003, sysdate(), 'juri', '{bcrypt}$2a$10$6vznRZg9sYnyY7EVPRNA9.AMvWwpTSttV5YN/cqwkop2hceKDp4eq');
-insert into post values(1101, 'Cannon Spike',1001);
-insert into post values(1102, 'Cannon Spike',1001);
-insert into post values(1103, 'Hooligan Combination',1001);
-insert into post values(1104, 'Hyakuretsukyaku',1002);
-insert into post values(1105, 'Kikoken',1002);
-insert into post values(1106, 'Spinning Bird Kick',1002);
-insert into post values(1107, 'Fuharenkyaku',1003);
-insert into post values(1108, 'Tensenrin',1003);
-insert into post values(1109, 'Ryodansatsu',1003);
+create table users(
+	id integer not null primary key,
+    username varchar(50) not null,
+	password varchar(500) not null
+);
+insert into users (id, username, password) values (1, 'cammy', '{bcrypt}$2a$10$6vznRZg9sYnyY7EVPRNA9.AMvWwpTSttV5YN/cqwkop2hceKDp4eq');
+insert into users (id, username, password) values(2, 'chun-li', '{bcrypt}$2a$10$6vznRZg9sYnyY7EVPRNA9.AMvWwpTSttV5YN/cqwkop2hceKDp4eq');
+insert into users (id, username, password) values(3, 'juri', '{bcrypt}$2a$10$6vznRZg9sYnyY7EVPRNA9.AMvWwpTSttV5YN/cqwkop2hceKDp4eq');
