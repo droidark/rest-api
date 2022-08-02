@@ -38,10 +38,11 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- SPRING SECURITY -->
+        <!-- SPRING SECURITY OAUTH2-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-authorization-server</artifactId>
+            <version>0.3.1</version>
         </dependency>
 
         <!-- LOMBOK -->
