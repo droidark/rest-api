@@ -76,7 +76,6 @@ public class RestConfig {
                 .exceptionHandling((exceptions) -> exceptions
                         .authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
                         .accessDeniedHandler(new BearerTokenAccessDeniedHandler()));
-
         return http.build();
     }
 
